@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css"
+	th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.css}"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.css"
+	th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap-theme.css}"></link>
+<link rel="stylesheet"
+	href="../static/css/common.css"
+	th:href="@{/css/common.css}"></link>
+<title>スケジュール</title>
+</head>
+<body>
+
+	<!-- ナビゲーションバー -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- topに戻る -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="./menu.html" th:href="@{/menu}">Brand</a>
+			</div>
+
+			<div class="collapse navbar-collapse">
+				<div class="navbar-form navbar-right" role="search">
+					<a th:href="@{/logout}" class="btn btn-default">ログアウト</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- 画面要素 -->
+	<div class="container" style="margin-top: 80px">
+		<div class="well">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="text-left">
+						<img class="img-circle" src="http://placehold.it/50x50" th:src="@{/img/calendar.jpg}" width="50" height="50"/>
+						スケジュール
+					</div>
+				</div>
+				<div class="col-sm-8">
+					<div class="pull-right">
+						<div class="text-center" style="margin-left: 10px;margin-right: 10px;">
+							<button class="btn btn-primary btn-circle btn-lg">
+								<span class="glyphicon glyphicon-plus"></span>
+							</button>
+							<div style="font-size: 12px;">予定追加</div>
+						</div>
+					</div>
+					<div class="pull-right">
+						<div class="text-center" style="margin-left: 10px;margin-right: 10px;">
+							<button class="btn btn-primary btn-circle btn-lg">
+								<span class="glyphicon glyphicon-user"></span>
+							</button>
+							<div style="font-size: 12px;">担当者<br/>情報更新</div>
+						</div>
+					</div>
+					<div class="pull-right">
+						<div class="text-center" style="margin-left: 10px;margin-right: 10px;">
+							<button class="btn btn-primary btn-circle btn-lg">
+								<span class="glyphicon glyphicon-picture"></span>
+							</button>
+							<div style="font-size: 12px;">画像変更</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 ">
+				<div class="row" style="margin-top: 4px;">
+					<div class="col-md-12">
+						<label for="new-password" class="control-label">画像:</label>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 4px;">
+					<div class="col-md-12 text-center">
+						<img class="img-circle" src="http://placehold.it/200x200" />
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="row" style="margin-top: 4px;">
+					<div class="col-md-12">
+						<label for="new-password" class="control-label">担当者情報:</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table style="background: white;" class="table table-bordered">
+								<tr>
+									<td class="impact-header" colspan="2" width="200">氏名</td>
+									<td>hoge huga太郎</td>
+								</tr>
+								<tr>
+									<td class="impact-header" rowspan="3">自宅情報</td>
+									<td class="impact-header" width="100">郵便番号</td>
+									<td>100-0000</td>
+								</tr>
+								<tr>
+									<td class="impact-header">住所</td>
+									<td>東京都千代田区1-1-1</td>
+								</tr>
+								<tr>
+									<td class="impact-header">電話番号</td>
+									<td>03-0000-0000</td>
+								</tr>
+								<tr>
+									<td class="impact-header" rowspan="3">所属</td>
+									<td class="impact-header">エリア</td>
+									<td>ほげほげ</td>
+								</tr>
+								<tr>
+									<td class="impact-header">連絡先番号</td>
+									<td>03-0000-0000</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 20px;">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-12">
+						<label for="new-password" class="control-label">一日の予定:</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div style="background: white;">
+							<div class="td impact-header form-inline" style="text-align: right; padding: 8px;">
+								日付
+								<input type="text" class="form-control" style="font-weight: normal;width: 100px;" value="2016/01/01"/>
+								<button class="btn btn-defalut" style="font-weight: normal; color: black;">
+									更新 <span class="glyphicon glyphicon-refresh"></span>
+								</button>
+							</div>
+							<div class="table-head" style="width: 15%; float: left;">
+								<div class="tr">
+									<div class="td hour border-head impact-header">&nbsp;</div>
+									<div class="td" style="height: 120px;">
+										<div><a href="#">斎藤次郎</a><br/></div>
+									</div>
+								</div>
+							</div>
+							<div id="data" style="overflow-x: scroll;">
+								<div class="table-data" style="width: 85%;">
+									<div class="tr">
+										<div class="td hour impact-header">00</div>
+										<div class="td hour impact-header">01</div>
+										<div class="td hour impact-header">02</div>
+										<div class="td hour impact-header">03</div>
+										<div class="td hour impact-header">04</div>
+										<div class="td hour impact-header">05</div>
+										<div class="td hour impact-header">06</div>
+										<div class="td hour impact-header">07</div>
+										<div class="td hour impact-header">08</div>
+										<div class="td hour impact-header">09</div>
+										<div class="td hour impact-header">10</div>
+										<div class="td hour impact-header">11</div>
+										<div class="td hour impact-header">12</div>
+										<div class="td hour impact-header">13</div>
+										<div class="td hour impact-header">14</div>
+										<div class="td hour impact-header">15</div>
+										<div class="td hour impact-header">16</div>
+										<div class="td hour impact-header">17</div>
+										<div class="td hour impact-header">18</div>
+										<div class="td hour impact-header">19</div>
+										<div class="td hour impact-header">20</div>
+										<div class="td hour impact-header">21</div>
+										<div class="td hour impact-header">22</div>
+										<div class="td hour impact-header">23</div>
+									</div>
+									<div class="tr">
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">
+											<div class="schedule" style="width: 100px; background-color: silver;">
+												場所<br/>
+												リソース<br/>
+												あいうえおかきくけこさしすせそたちつてと<br/>
+											</div>
+										</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">
+											<div class="schedule" style="width: 100px;"></div>
+											<div class="schedule" style="width: 100px; background-color: silver;">
+												場所<br/>
+												リソース<br/>
+												あいうえおかきくけこさしすせそたちつてと<br/>
+											</div>
+										</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">
+											<div class="schedule" style="width: 300px; background-color: deepskyblue;">
+												場所<br/>
+												リソース<br/>
+												あいうえおかきくけこさしすせそたちつてと<br/>
+											</div>
+										</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">
+											<div class="schedule" style="width: 300px; background-color: deepskyblue;">
+												場所<br/>
+												リソース<br/>
+												あいうえおかきくけこさしすせそたちつてと<br/>
+											</div>
+										</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+										<div style="height: 120px" class="quarter-minute">&nbsp;</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 20px;">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-12">
+						<label for="new-password" class="control-label">予定一覧:</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table class="table table-bordered">
+								<tr>
+									<td class="impact-header" width="8%">No.</td>
+									<td class="impact-header" width="8%">状態</td>
+									<td class="impact-header" width="10%">担当者</td>
+									<td class="impact-header" width="12%">開始時刻<br/>終了時刻</td>
+									<td class="impact-header" width="20%">予定</td>
+									<td class="impact-header" width="20%">リソース</td>
+									<td class="impact-header">内容</td>
+								</tr>
+								<tr>
+									<td><div class="text-center">1</div></td>
+									<td><div class="text-center">済</div></td>
+									<td>Aさん<br/>Bさん</td>
+									<td>14:00<br/>15:00</td>
+									<td>15:00</td>
+									<td><a id="no1" href="#">販売会社 店舗 車種 色</a></td>
+									<td>ああああああああああああああああああああああああいいいいいいいいいいいいいいいいいいいいいい</td>
+								</tr>
+								<tr>
+									<td><div class="text-center">2</div></td>
+									<td><div class="text-center">済</div></td>
+									<td>Aさん<br/>Bさん</td>
+									<td>14:00<br/>15:00</td>
+									<td>15:00</td>
+									<td><a id="no1" href="#">販売会社 店舗 車種 色</a></td>
+									<td>ああああああああああああああああああああああああいいいいいいいいいいいいいいいいいいいいいい</td>
+								</tr>
+								<tr>
+									<td><div class="text-center">3</div></td>
+									<td><div class="text-center">済</div></td>
+									<td>Aさん<br/>Bさん</td>
+									<td>14:00<br/>15:00</td>
+									<td>15:00</td>
+									<td><a id="no1" href="#">販売会社 店舗 車種 色</a></td>
+									<td>ああああああああああああああああああああああああいいいいいいいいいいいいいいいいいいいいいい</td>
+								</tr>
+								<tr>
+									<td><div class="text-center">4</div></td>
+									<td><div class="text-center">済</div></td>
+									<td>Aさん<br/>Bさん</td>
+									<td>14:00<br/>15:00</td>
+									<td>15:00</td>
+									<td><a id="no1" href="#">販売会社 店舗 車種 色</a></td>
+									<td>ああああああああああああああああああああああああいいいいいいいいいいいいいいいいいいいいいい</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr/>
+		<div class="text-center">
+			<p>Copyright (C) 2015 hogehoge. All Rights Reserved.</p>
+		</div>
+	</div>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="imgModal" tabindex="-1" role="dialog"
+		aria-labelledby="imgModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">スケジュール詳細</h4>
+				</div>
+				<div class="modal-body">...</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">保存する</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="taskModal" tabindex="-1" role="dialog"
+		aria-labelledby="taskModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">予定名</h4>
+				</div>
+				<div class="modal-body">
+					<p>
+						<b>開始時刻 </b>ssss
+					</p>
+					<p>
+						<b>終了時刻 </b>ssss
+					</p>
+					<b>内容</b><br/>
+					<textarea style="resize: none; width: 100%;" rows="10">
+					</textarea>
+				</div>
+				<div class="modal-footer">
+					<div class="pull-left">
+						<button type="button" class="btn btn-danger">削除する</button>
+					</div>
+					<div class="pull-right">
+						<button type="button" class="btn btn-primary">保存する</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"
+		th:src="@{/webjars/jquery/2.1.4/jquery.js}"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js"
+		th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.js}"></script>
+
+	<script>
+		$('#imgButton').on('click', function(e) {
+			e.preventDefault();
+
+			$('#imgModal').modal('show');
+		});
+
+		$('#no1').on('click', function(e) {
+			e.preventDefault();
+
+			$('#taskModal').modal('show');
+		});
+
+		// スクロール位置
+		$(function() {
+
+			var nowHour = new Date().getHours();
+			$('#data').scrollLeft(nowHour * 100);
+		});
+
+	</script>
+</body>
+</html>

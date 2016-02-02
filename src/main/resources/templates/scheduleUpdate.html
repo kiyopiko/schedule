@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css"
+	th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.css}"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.css"
+	th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap-theme.css}"></link>
+<link rel="stylesheet"
+	href="../static/css/common.css"
+	th:href="@{/css/common.css}"></link>
+<title>スケジュール一覧</title>
+</head>
+<body>
+
+	<!-- ナビゲーションバー -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- topに戻る -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="./menu.html" th:href="@{/menu}">Brand</a>
+			</div>
+
+			<div class="collapse navbar-collapse">
+				<div class="navbar-form navbar-right" role="search">
+					<a class="btn btn-default" href="./loginForm.html" th:href="@{/logout}">ログアウト</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- 画面要素 -->
+	<div class="container" style="margin-top: 80px">
+
+		<div class="well">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="text-left">
+						<img class="img-circle" src="http://placehold.it/50x50" th:src="@{/img/schedule.jpg}" width="50" height="50"/>
+						スケジュール登録・更新
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="pull-right">
+						<div class="text-center" style="margin-left: 10px;margin-right: 10px;">
+							<button class="btn btn-primary btn-circle btn-lg">
+								<span class="glyphicon glyphicon-plus"></span>
+							</button>
+							<div style="font-size: 12px;">予定追加</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 20px;">
+			<div class="col-md-12">
+				<div class="row" style="margin-top: 5px">
+					<div class="col-md-12">
+						<label class="control-label">表示色:</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<select class="form-control" required="required">
+							<option></option>
+							<option>青</option>
+							<option>緑</option>
+							<option>赤</option>
+							<option>黄色</option>
+							<option>ピンク</option>
+						</select>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 5px">
+					<div class="col-md-12">
+						<label class="control-label">ステータス:</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<select class="form-control" required="required">
+							<option></option>
+							<option>仮登録</option>
+							<option>未実施</option>
+							<option>仕掛中</option>
+							<option>実施済</option>
+						</select>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 5px">
+					<div class="col-md-12">
+						<label class="control-label">時間:</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<select class="form-control" required="required">
+							<option></option>
+							<option>00:00</option>
+							<option>00:15</option>
+							<option>00:30</option>
+							<option>00:45</option>
+							<option>01:00</option>
+							<option>01:15</option>
+							<option>01:30</option>
+							<option>01:45</option>
+							<option>02:00</option>
+							<option>02:15</option>
+							<option>02:30</option>
+							<option>02:45</option>
+							<option>03:00</option>
+							<option>03:15</option>
+							<option>03:30</option>
+							<option>03:45</option>
+							<option>04:00</option>
+							<option>04:15</option>
+							<option>04:30</option>
+							<option>04:45</option>
+							<option>05:00</option>
+							<option>05:15</option>
+							<option>05:30</option>
+							<option>05:45</option>
+							<option>06:00</option>
+							<option>06:15</option>
+							<option>06:30</option>
+							<option>06:45</option>
+							<option>07:00</option>
+							<option>07:15</option>
+							<option>07:30</option>
+							<option>07:45</option>
+							<option>08:00</option>
+							<option>08:15</option>
+							<option>08:30</option>
+							<option>08:45</option>
+							<option>09:00</option>
+							<option>09:15</option>
+							<option>09:30</option>
+							<option>09:45</option>
+							<option>10:00</option>
+							<option>10:15</option>
+							<option>10:30</option>
+							<option>10:45</option>
+							<option>11:00</option>
+							<option>11:15</option>
+							<option>11:30</option>
+							<option>11:45</option>
+							<option>12:00</option>
+							<option>12:15</option>
+							<option>12:30</option>
+							<option>12:45</option>
+							<option>13:00</option>
+							<option>13:15</option>
+							<option>13:30</option>
+							<option>13:45</option>
+							<option>14:00</option>
+							<option>14:15</option>
+							<option>14:30</option>
+							<option>14:45</option>
+							<option>15:00</option>
+							<option>15:15</option>
+							<option>15:30</option>
+							<option>15:45</option>
+							<option>16:00</option>
+							<option>16:15</option>
+							<option>16:30</option>
+							<option>16:45</option>
+							<option>17:00</option>
+							<option>17:15</option>
+							<option>17:30</option>
+							<option>17:45</option>
+							<option>18:00</option>
+							<option>18:15</option>
+							<option>18:30</option>
+							<option>18:45</option>
+							<option>19:00</option>
+							<option>19:15</option>
+							<option>19:30</option>
+							<option>19:45</option>
+							<option>20:00</option>
+							<option>20:15</option>
+							<option>20:30</option>
+							<option>20:45</option>
+							<option>21:00</option>
+							<option>21:15</option>
+							<option>21:30</option>
+							<option>21:45</option>
+							<option>22:00</option>
+							<option>22:15</option>
+							<option>22:30</option>
+							<option>22:45</option>
+							<option>23:00</option>
+							<option>23:15</option>
+							<option>23:30</option>
+							<option>23:45</option>
+						</select>
+					</div>
+					<div class="col-md-1">
+						<div class="text-center" style="margin-top: 8px; font-weight: bold;">～</div>
+					</div>
+					<div class="col-md-3">
+						<select class="form-control" required="required">
+							<option></option>
+							<option>00:00</option>
+							<option>00:15</option>
+							<option>00:30</option>
+							<option>00:45</option>
+							<option>01:00</option>
+							<option>01:15</option>
+							<option>01:30</option>
+							<option>01:45</option>
+							<option>02:00</option>
+							<option>02:15</option>
+							<option>02:30</option>
+							<option>02:45</option>
+							<option>03:00</option>
+							<option>03:15</option>
+							<option>03:30</option>
+							<option>03:45</option>
+							<option>04:00</option>
+							<option>04:15</option>
+							<option>04:30</option>
+							<option>04:45</option>
+							<option>05:00</option>
+							<option>05:15</option>
+							<option>05:30</option>
+							<option>05:45</option>
+							<option>06:00</option>
+							<option>06:15</option>
+							<option>06:30</option>
+							<option>06:45</option>
+							<option>07:00</option>
+							<option>07:15</option>
+							<option>07:30</option>
+							<option>07:45</option>
+							<option>08:00</option>
+							<option>08:15</option>
+							<option>08:30</option>
+							<option>08:45</option>
+							<option>09:00</option>
+							<option>09:15</option>
+							<option>09:30</option>
+							<option>09:45</option>
+							<option>10:00</option>
+							<option>10:15</option>
+							<option>10:30</option>
+							<option>10:45</option>
+							<option>11:00</option>
+							<option>11:15</option>
+							<option>11:30</option>
+							<option>11:45</option>
+							<option>12:00</option>
+							<option>12:15</option>
+							<option>12:30</option>
+							<option>12:45</option>
+							<option>13:00</option>
+							<option>13:15</option>
+							<option>13:30</option>
+							<option>13:45</option>
+							<option>14:00</option>
+							<option>14:15</option>
+							<option>14:30</option>
+							<option>14:45</option>
+							<option>15:00</option>
+							<option>15:15</option>
+							<option>15:30</option>
+							<option>15:45</option>
+							<option>16:00</option>
+							<option>16:15</option>
+							<option>16:30</option>
+							<option>16:45</option>
+							<option>17:00</option>
+							<option>17:15</option>
+							<option>17:30</option>
+							<option>17:45</option>
+							<option>18:00</option>
+							<option>18:15</option>
+							<option>18:30</option>
+							<option>18:45</option>
+							<option>19:00</option>
+							<option>19:15</option>
+							<option>19:30</option>
+							<option>19:45</option>
+							<option>20:00</option>
+							<option>20:15</option>
+							<option>20:30</option>
+							<option>20:45</option>
+							<option>21:00</option>
+							<option>21:15</option>
+							<option>21:30</option>
+							<option>21:45</option>
+							<option>22:00</option>
+							<option>22:15</option>
+							<option>22:30</option>
+							<option>22:45</option>
+							<option>23:00</option>
+							<option>23:15</option>
+							<option>23:30</option>
+							<option>23:45</option>
+						</select>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 5px">
+					<div class="col-md-12">
+						<label class="control-label">場所:</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<select class="form-control" required="required">
+							<option></option>
+							<option>埼玉トヨタ　ホゲホゲ</option>
+							<option>埼玉トヨタ　フガフガ</option>
+						</select>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 5px">
+					<div class="col-md-6">
+						<div class="well" style="background: white;margin-top: 5px;margin-bottom: 0px;">
+							<div class="row">
+								<div class="col-sm-7">
+									<label class="control-label">実施担当者:</label>
+								</div>
+								<div class="col-sm-5">
+									<button id="add-tantousha" class="btn btn-primary btn-block">
+										担当者追加 <span class="glyphicon glyphicon-plus"></span>
+									</button>
+								</div>
+							</div>
+							<div class="row" style="margin-top: 5px">
+								<div class="col-md-12">
+									<div class="col-sm-8">
+										<div style="margin-left: 10px;font-weight: bold;">
+											hogehoge<br>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<button class="btn btn-danger btn-block">
+											<span class="glyphicon glyphicon-trash"></span>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="well" style="background: white;margin-top: 5px;margin-bottom: 0px;">
+							<div class="row">
+								<div class="col-sm-7">
+									<label class="control-label">リソース:</label>
+								</div>
+								<div class="col-sm-5">
+									<button id="add-resource" class="btn btn-primary btn-block">
+										リソース追加 <span class="glyphicon glyphicon-plus"></span>
+									</button>
+								</div>
+							</div>
+							<div class="row" style="margin-top: 5px">
+								<div class="col-md-12">
+									<div class="row">
+										<div class="col-sm-8">
+											<div style="margin-left: 10px;font-weight: bold;">
+											リソース1
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<button class="btn btn-danger btn-block">
+												<span class="glyphicon glyphicon-trash"></span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 5px">
+					<div class="col-md-12">
+						<label class="control-label">内容:</label>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 5px">
+					<div class="col-md-12">
+						<textarea class="form-control"  style="resize: none; width: 100%;" rows="5"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr />
+		<div class="text-center">
+			<p>Copyright (C) 2015 hogehoge. All Rights Reserved.</p>
+		</div>
+	</div>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="tantoushaModal" tabindex="-1" role="dialog" aria-labelledby="tantoushaModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">担当者</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row" style="margin-top: 5px">
+						<div class="col-md-12">
+							<label class="control-label">内容:</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<textarea class="form-control"  style="resize: none; width: 100%;" rows="5"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="pull-left">
+						<button type="button" class="btn btn-danger">削除</button>
+					</div>
+					<div class="pull-right">
+						<button type="button" class="btn btn-primary">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="resourceModal" tabindex="-1" role="dialog" aria-labelledby="resourceModalLabel">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">リソース</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row" style="margin-top: 5px">
+						<div class="col-md-6">
+							<label class="control-label">区分:</label>
+						</div>
+					</div>
+					<div class="row" style="margin-top: 5px">
+						<div class="col-md-6">
+							<select class="form-control" required="required">
+								<option></option>
+								<option>自動車</option>
+								<option>薬剤</option>
+							</select>
+						</div>
+					</div>
+					<div class="row" style="margin-top: 5px">
+						<div class="col-md-6">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox"> 自動車１
+								</label>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox"> 自動車１
+								</label>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox"> 自動車１
+								</label>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox"> 自動車１
+								</label>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox"> 自動車１
+								</label>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox"> 自動車１
+								</label>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox"> 自動車１
+								</label>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox"> 自動車１
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="pull-right">
+						<button type="button" class="btn btn-primary">追加</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"
+		th:src="@{/webjars/jquery/2.1.4/jquery.js}"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js"
+		th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.js}"></script>
+
+	<script>
+
+		// スクロール位置
+		$(function() {
+
+			var nowHour = new Date().getHours();
+			$('#data').scrollLeft(nowHour * 100);
+		});
+
+		$('#add-tantousha').on('click',function(e){
+
+			$('#tantoushaModal').modal({backdrop: "static"});
+		});
+
+		$('#add-resource').on('click',function(e){
+
+			$('#resourceModal').modal({backdrop: "static"});
+		});
+
+	</script>
+</body>
+</html>

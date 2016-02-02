@@ -1,0 +1,115 @@
+/* ボタンを丸くする */
+.btn-circle {
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	padding: 6px 0;
+	font-size: 12px;
+	line-height: 1.428571429;
+	border-radius: 15px;
+}
+
+.btn-circle.btn-lg {
+	width: 50px;
+	height: 50px;
+	padding: 10px 16px;
+	font-size: 18px;
+	line-height: 1.33;
+	border-radius: 25px;
+}
+
+.btn-circle.btn-xl {
+	width: 70px;
+	height: 70px;
+	padding: 10px 16px;
+	font-size: 24px;
+	line-height: 1.33;
+	border-radius: 35px;
+}
+
+/* bootstrapのtable要素を利用するときのラップをする */
+.table {
+	background: white;
+	table-layout: fixed;
+	margin-bottom: 0px;
+	word-break: break-all;
+}
+
+/* 独自作成一覧用テーブル カラムヘッダ */
+.table-head {
+
+}
+
+.table-head .tr {
+	width: 100%;
+	clear: left;
+}
+
+.table-head .tr .td {
+	width: 100%;
+	float: left;
+	padding: 8px;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+
+.border-head {
+	border-top: 1px solid #ddd;
+}
+
+/* 独自作成一覧用テーブルデータ */
+.table-data {
+
+}
+
+.table-data .tr {
+	width: 2400px;
+	clear: left;
+}
+
+.table-data .tr .td {
+	width: 100px;
+	float: left;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+
+/* 時刻ヘッダ  */
+.hour {
+	text-align: center;
+	padding: 8px;
+	border-top: 1px solid #ddd;
+}
+
+.quarter-minute {
+	width: 25px;
+	float: left;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+
+/* スケジュール要素 */
+.schedule {
+	height: 60px;
+	position: relative;
+	overflow: hidden;
+}
+
+.impact-header {
+	text-align: center;
+	background: #333;
+	font-weight: bold;
+	color: white;
+}
+
+.date-selecter {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background: #333;
+	font-weight: bold;
+	color: white;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}

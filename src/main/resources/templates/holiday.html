@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css"
+	th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.css}"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.css"
+	th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap-theme.css}"></link>
+<link rel="stylesheet"
+	href="../static/css/common.css"
+	th:href="@{/css/common.css}"></link>
+<title>スケジュール</title>
+</head>
+<body>
+
+	<!-- ナビゲーションバー -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- topに戻る -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="./menu.html" th:href="@{/menu}">Brand</a>
+			</div>
+
+			<div class="collapse navbar-collapse">
+				<div class="navbar-form navbar-right" role="search">
+					<a th:href="@{/logout}" class="btn btn-default">ログアウト</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- 画面要素 -->
+	<div class="container" style="margin-top: 80px">
+		<div class="well">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="text-left">
+						<img class="img-circle" src="http://placehold.it/50x50" th:src="@{/img/leaf.jpg}" width="50" height="50"/>
+						休暇
+					</div>
+				</div>
+				<div class="col-sm-8">
+					<div class="pull-right">
+						<div class="text-center" style="margin-left: 10px;margin-right: 10px;">
+							<button class="btn btn-primary btn-circle btn-lg">
+								<span class="glyphicon glyphicon-floppy-disk"></span>
+							</button>
+							<div style="font-size: 12px;">登録</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 20px;">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-12">
+						<label for="new-password" class="control-label">休暇:</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table class="table table-bordered">
+								<tr>
+									<td class="impact-header">日</td>
+									<td class="impact-header">月</td>
+									<td class="impact-header">火</td>
+									<td class="impact-header">水</td>
+									<td class="impact-header">木</td>
+									<td class="impact-header">金</td>
+									<td class="impact-header">土</td>
+								</tr>
+								<tr>
+									<td>01<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>02<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>03<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>04<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>05<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>06<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>07<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>08<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>09<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>10<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>11<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>12<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>13<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>14<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>15<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>16<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>17<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>18<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>19<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>20<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>21<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>22<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>23<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>24<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>25<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>26<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>27<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>28<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>29<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>30<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td>31<br/>
+										<select class="form-control" required="required">
+											<option></option>
+											<option>◯</option>
+											<option>△</option>
+											<option>×</option>
+										</select>
+									</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 20px;">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-12">
+						<label for="new-password" class="control-label">備考:</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<textarea class="form-control"  style="resize: none; width: 100%;" rows="5"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr/>
+		<div class="text-center">
+			<p>Copyright (C) 2015 hogehoge. All Rights Reserved.</p>
+		</div>
+	</div>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="imgModal" tabindex="-1" role="dialog"
+		aria-labelledby="imgModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">スケジュール詳細</h4>
+				</div>
+				<div class="modal-body">...</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">保存する</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="taskModal" tabindex="-1" role="dialog"
+		aria-labelledby="taskModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">予定名</h4>
+				</div>
+				<div class="modal-body">
+					<p>
+						<b>開始時刻 </b>ssss
+					</p>
+					<p>
+						<b>終了時刻 </b>ssss
+					</p>
+					<b>内容</b><br/>
+					<textarea style="resize: none; width: 100%;" rows="10">
+					</textarea>
+				</div>
+				<div class="modal-footer">
+					<div class="pull-left">
+						<button type="button" class="btn btn-danger">削除する</button>
+					</div>
+					<div class="pull-right">
+						<button type="button" class="btn btn-primary">保存する</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"
+		th:src="@{/webjars/jquery/2.1.4/jquery.js}"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js"
+		th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.js}"></script>
+
+	<script>
+		$('#imgButton').on('click', function(e) {
+			e.preventDefault();
+
+			$('#imgModal').modal('show');
+		});
+
+		$('#no1').on('click', function(e) {
+			e.preventDefault();
+
+			$('#taskModal').modal('show');
+		});
+
+		// スクロール位置
+		$(function() {
+
+			var nowHour = new Date().getHours();
+			$('#data').scrollLeft(nowHour * 100);
+		});
+
+	</script>
+</body>
+</html>

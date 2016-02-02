@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XML文法に関する警告を出力しない -->
+<!DOCTYPE configuration>
+
+<configuration debug="false">
+
+	<!-- ログ出力のパターン定義 -->
+	<property name="DEBUG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger{255}]: %C{255} - %msg, %ex%n" />
+	<property name="ERROR_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger{255}]: %C{255} - %msg, %ex%n" />
+	<property name="OPERATION_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%-5level] [%logger{255}]: %C{255} - %msg, %ex%n" />
+	<property name="DBACCESS_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%-5level] [%logger{255}]: %C{255} - %msg, %ex%n" />
+
+	<!-- デバッグ用ログ（標準出力） -->
+	<appender name="debugStdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${DEBUG_PATTERN}</pattern>
+			<immediateFlush>true</immediateFlush>
+		</encoder>
+	</appender>
+
+	<!-- デバッグ用ログ（標準出力） -->
+	<appender name="debugFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/export/log/debug.log</File>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>${DEBUG_PATTERN}</Pattern>
+		</layout>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>/export/log/debug.%d{yyyyMMdd}.log</FileNamePattern>
+			<MaxHistory>2</MaxHistory>
+		</rollingPolicy>
+	</appender>
+
+	<!-- エラーログ（標準出力） -->
+	<appender name="errorStout" class="ch.qos.logback.core.ConsoleAppender">
+		<Target>System.out</Target>
+		<!-- ERRORレベル以上のログのみを出力するためのフィルタ -->
+		<!-- filter class="ch.qos.logback.classic.filter.ThresoldFilter">
+			<level>ERROR</level>
+		</filter -->
+		<encoder>
+			<pattern>${ERROR_PATTERN}</pattern>
+			<immediateFlush>true</immediateFlush>
+		</encoder>
+	</appender>
+
+	<!-- エラーログ（ファイル） -->
+	<appender name="errorFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/export/log/error.log</File>
+		<!-- ERRORレベル以上のログのみを出力するためのフィルタ -->
+		<!-- filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter -->
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>${ERROR_PATTERN}</Pattern>
+		</layout>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>/export/log/error.%d{yyyyMMdd}.log</FileNamePattern>
+			<MaxHistory>7</MaxHistory>
+		</rollingPolicy>
+	</appender>
+
+	<logger name="ErrorLog" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="errorStout" />
+		<appender-ref ref="errorFile" />
+	</logger>
+
+	<root level="DEBUG">
+		<appender-ref ref="debugStdout" />
+		<appender-ref ref="debugFile" />
+	</root>
+</configuration>

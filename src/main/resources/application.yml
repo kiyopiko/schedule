@@ -1,0 +1,23 @@
+#See http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+
+#basic認証を停止
+security:
+    basic:
+        enabled: false
+
+server:
+    #起動ポート
+    port: 8080
+
+    #コンテキストパス
+    contextPath: /schedule
+
+spring:
+    #Thymeleafを使ったときにテンプレートをキャッシュさせない(開発用)
+    thymeleaf.cache: false
+
+    datasource:
+        driverClassName: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/schedule
+        username: sample
+        password: sample
