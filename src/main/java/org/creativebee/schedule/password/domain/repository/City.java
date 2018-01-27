@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package org.creativebee.schedule.password.domain;
+package org.creativebee.schedule.password.domain.repository;
 
 import java.io.Serializable;
 
@@ -22,18 +22,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * @author Eddú Meléndez
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class City implements Serializable {
-
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = -604554279026219842L;
 
 	private Long id;
 
