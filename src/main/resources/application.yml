@@ -1,4 +1,4 @@
-#See http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+    #See http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 
 #basic認証を停止
 security:
@@ -19,5 +19,5 @@ spring:
     datasource:
         driverClassName: org.postgresql.Driver
         url: jdbc:postgresql://localhost:5432/schedule
-        username: sample
-        password: sample
+        username: tani
+        password: tani
